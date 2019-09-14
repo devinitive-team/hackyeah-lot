@@ -1,9 +1,9 @@
 import { Module } from "@nestjs/common";
 import { GraphQLModule } from "@nestjs/graphql";
 
-import { DatabaseModule} from "./database/database.module";
+import { DatabaseModule } from "./database/database.module";
 
-import { CitiesResolver } from "./cities/cities.resolver";
+import { CityModule } from "./city/city.module";
 
 @Module({
   imports: [
@@ -13,7 +13,7 @@ import { CitiesResolver } from "./cities/cities.resolver";
       playground: true,
       typePaths: ["./**/*.graphql"],
     }),
+    CityModule,
   ],
-  providers: [CitiesResolver],
 })
 export class AppModule {}
