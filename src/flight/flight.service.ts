@@ -1,20 +1,37 @@
-import { Injectable } from "@nestjs/common";
-import { InjectModel } from "@nestjs/mongoose";
-import { Model } from "mongoose";
+import { Injectable, Logger } from "@nestjs/common";
 
-import { Flight } from "./flight.interface";
+import { IFlight } from "./flight.interface";
+
+import axios from "../axiosWrapper";
 
 @Injectable()
 export class FlightService {
-  constructor(
-    @InjectModel("Flight") private readonly flightModel: Model<Flight>,
-  ) {}
+  private readonly logger = new Logger(FlightService.name);
 
-  public all(): Promise<Flight[]> {
-    return this.flightModel.find().exec();
-  }
+  public async all(opts: any): Promise<IFlight[]> {
+    const bodyFormData = {
+      params: {} as any,
+    };
 
-  public one(id: string): Promise<Flight> {
-    return this.flightModel.findOne({ id }).exec();
+    for (const [key, value] of Object.entries(opts)) {
+      if (value) {
+        if (["departureDate", "origin", "destination"].includes(key)) {
+          bodyFormData.params[key] = [value];
+        } else {
+          bodyFormData.params[key] = value;
+        }
+      }
+    }
+
+    try {
+      const res = await axios.post(
+        "https://api.lot.com/flights-dev/v2/booking/availability",
+        bodyFormData,
+      );
+
+      return res.data.data.flat();
+    } catch (error) {
+      this.logger.error(error);
+    }
   }
 }

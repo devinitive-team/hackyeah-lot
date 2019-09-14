@@ -1,19 +1,61 @@
+type TotalPrice {
+    price: Float
+    basePrice: Float
+    tax: Float
+    currency: String
+}
+
+type Obj {
+    _: Boolean
+}
+
+type Segment {
+    idInfoSegment: Int
+    departureAirport: String
+    arrivalAirport: String
+    departureDate: String
+    arrivalDate: String
+    carrier: String
+    flightNumber: String
+    operationCarrier: String
+    equipment: String
+    duration: Int
+    stopTime: Int
+    status: [String]
+    baggageForPax: Obj
+    scheduleChange: Int
+}
+
+type Trip {
+    duration: Int
+    segments: [Segment]
+    fareType: String
+    price: Float
+    id: Int
+}
+
 type Flight {
-    origin: [String],
-    destination: [String],
-    departureDate: [String],
-    returnDate: String,
-    cabinClass: String,
-    market: String,
-    tripType: String,
-    adt: Int,
-    c14: Int,
-    chd: Int,
-    inf: Int,
-    fromCache: Boolean,
-    fareType: [String]
+    offerId: Int
+    totalPrice: TotalPrice
+    outbound: Trip
+    inbound: Trip
+    url: String
 }
 
 type Query {
-    flights: [Flight]
+    flights(
+        origin: String!,
+        destination: String!,
+        departureDate: String!,
+        cabinClass: String!,
+        market: String!,
+        tripType: String!,
+        adt: Int!,
+        c14: String,
+        chd: String,
+        inf: String,
+        fromCache: String,
+        fareType: String,
+        returnDate: String
+    ): [Flight]
 }
