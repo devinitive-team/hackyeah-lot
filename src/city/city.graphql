@@ -1,5 +1,8 @@
 type City {
     id: String,
+    category: String,
+    code: String,
+    description: String,
     name: String,
 }
 
