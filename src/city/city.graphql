@@ -1,6 +1,6 @@
 type City {
     id: String,
-    advertisment: String,
+    advertisement: String,
     category: String,
     code: String,
     description: String,
