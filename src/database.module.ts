@@ -2,6 +2,6 @@ import { Module } from "@nestjs/common";
 import { MongooseModule } from "@nestjs/mongoose";
 
 @Module({
-  imports: [MongooseModule.forRoot("mongodb://localhost/lot")],
+  imports: [MongooseModule.forRoot(process.env.MONGO_URL || "mongodb://localhost/lot")],
 })
 export class DatabaseModule {}

@@ -1,7 +1,7 @@
 import { Module } from "@nestjs/common";
 import { GraphQLModule } from "@nestjs/graphql";
 
-import { DatabaseModule } from "./database/database.module";
+import { DatabaseModule } from "./database.module";
 
 import { CityModule } from "./city/city.module";
 
