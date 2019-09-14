@@ -5,6 +5,7 @@ import { ScheduleModule } from "nest-schedule";
 import { DatabaseModule } from "./database.module";
 
 import { CityModule } from "./city/city.module";
+import { FlightModule } from "./flight/flight.module";
 import { TokenModule } from "./token/token.module";
 
 @Module({
@@ -16,7 +17,9 @@ import { TokenModule } from "./token/token.module";
       typePaths: ["./**/*.graphql"],
     }),
     ScheduleModule.register(),
+
     CityModule,
+    FlightModule,
     TokenModule,
   ],
 })

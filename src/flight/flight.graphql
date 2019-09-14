@@ -1,0 +1,19 @@
+type Flight {
+    origin: [String],
+    destination: [String],
+    departureDate: [String],
+    returnDate: String,
+    cabinClass: String,
+    market: String,
+    tripType: String,
+    adt: Int,
+    c14: Int,
+    chd: Int,
+    inf: Int,
+    fromCache: Boolean,
+    fareType: [String]
+}
+
+type Query {
+    flights: [Flight]
+}
