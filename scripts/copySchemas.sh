@@ -3,7 +3,9 @@
 for D in `pwd`/src/*; do
     if [[ -d "${D}" ]]; then
         for f in ${D}/*.graphql; do
-            cp ${f} ${f/src/dist}
+            if [[ -e "${f}" ]]; then
+                cp ${f} ${f/src/dist}
+            fi
         done
     fi
 done
