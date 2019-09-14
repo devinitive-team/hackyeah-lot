@@ -1,9 +1,12 @@
 type City {
     id: String,
+    advertisment: String,
     category: String,
     code: String,
     description: String,
     name: String,
+    imagesSmall: [String],
+    imagesBig: [String],
 }
 
 type Query {
