@@ -1,6 +1,5 @@
 import { ParseIntPipe } from "@nestjs/common";
 import { Args, Query, Resolver } from "@nestjs/graphql";
-
 import { CityService } from "./city.service";
 
 @Resolver("City")

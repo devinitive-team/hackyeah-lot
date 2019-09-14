@@ -6,7 +6,10 @@ import { CityService } from "./city.service";
 import { CityResolver } from "./city.resolver";
 
 @Module({
-  imports: [MongooseModule.forFeature([{ name: "City", schema: CityModel }]), CityModule],
+  imports: [
+    MongooseModule.forFeature([{ name: "City", schema: CityModel }]),
+    CityModule,
+  ],
   exports: [CityService],
   providers: [CityService, CityResolver],
 })

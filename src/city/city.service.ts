@@ -6,9 +6,7 @@ import { ICity } from "./city.interface";
 
 @Injectable()
 export class CityService {
-  constructor(
-    @InjectModel("City") private readonly cityModel: Model<ICity>,
-  ) {}
+  constructor(@InjectModel("City") private readonly cityModel: Model<ICity>) {}
 
   public all(): Promise<ICity[]> {
     return this.cityModel.find().exec();
