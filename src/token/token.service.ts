@@ -11,7 +11,7 @@ export class TokenService extends NestSchedule {
     super();
     this.getToken();
   }
-  @Interval(20 * 60 * 1000)
+
   async getToken() {
     const bodyFormData = {
       secret_key: "2przp49a52",
@@ -30,7 +30,32 @@ export class TokenService extends NestSchedule {
 
       axios.defaults.headers.Authorization = `Bearer ${res.data.access_token}`;
 
-      this.logger.log("Token has been refreshed!");
+      this.logger.log("Token has been acknowledged!");
+    } catch (error) {
+      this.logger.error(error);
+    }
+  }
+
+  @Interval(19 * 60 * 1000)
+  async refreshToken() {
+    const bodyFormData = {
+      secret_key: "2przp49a52",
+    };
+
+    try {
+      const res = await axios({
+        method: "post",
+        url: "https://api.lot.com/flights-dev/v2/auth/token/refresh",
+        data: bodyFormData,
+        headers: {
+          "Content-Type": "application/json",
+          "X-Api-Key": "9YFNNKS31u9gCFKPetPWdAAjEXnED0B3K18AeYgg",
+        },
+      });
+
+      axios.defaults.headers.Authorization = `Bearer ${res.data.access_token}`;
+
+      this.logger.log("Token has been acknowledged!");
     } catch (error) {
       this.logger.error(error);
     }
