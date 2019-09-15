@@ -31,8 +31,8 @@ FROM node:10.16.3-slim
 WORKDIR /app
 
 ## Setup production ENV
-ARG NODE_ENV=production
-ENV NODE_ENV=${NODE_ENV}
+## ARG NODE_ENV=production
+## ENV NODE_ENV=${NODE_ENV}
 
 ## Copy package jsons from installer
 COPY --from=installer /usr/app/package*.json ./
