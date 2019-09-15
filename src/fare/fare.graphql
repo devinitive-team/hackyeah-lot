@@ -1,0 +1,13 @@
+type Fare {
+    test: String
+}
+
+type Query {
+    fares(
+        listIdOutbound: [Int]!,
+        idInbound: Int,
+        idOffer: [Int],
+        fareFamilyReturnCod: String,
+        fareFamilyOutwarCod: String
+    ): [Fare]
+}
