@@ -5,6 +5,7 @@ import { ScheduleModule } from "nest-schedule";
 import { DatabaseModule } from "./database.module";
 
 import { CityModule } from "./city/city.module";
+import { FareModule } from "./fare/fare.module";
 import { FlightModule } from "./flight/flight.module";
 import { TokenModule } from "./token/token.module";
 
@@ -19,6 +20,7 @@ import { TokenModule } from "./token/token.module";
     ScheduleModule.register(),
 
     CityModule,
+    FareModule,
     FlightModule,
     TokenModule,
   ],
