@@ -1,0 +1,20 @@
+type EventImage {
+    ratio: String
+    url: String
+    width: Int
+    height: Int
+    fallback: Boolean
+}
+
+type Event {
+    name: String
+    url: String
+    images: [Event]
+    startTime: String
+}
+
+type Query {
+    events(
+        city: String!
+    ): [Event]
+}
